@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { Network } from '@capacitor/network';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(public toastCtrl: ToastController) {
+    this.openToast();
+  }
+  async openToast() {
+    const status = await (await Network.getStatus()).connectionType;  
+    const toast = await this.toastCtrl.create({  
+      message: `Nous avons une connexion ${status}`,   
+      duration: 3000  
+    });  
+    toast.present();  
+  }
 }

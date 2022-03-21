@@ -13,5 +13,16 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-card *ngFor="tabMesure">
+    <ion-card-header>
+      <ion-card-title>Coordinates</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>Latitude: {{ tabMesure[0]?.latitude }}</ion-item>
+      <ion-item>Longitude: {{ tabMesure[0]?.longitude }}</ion-item>
+      <ion-item>Date de la mesure: {{ tabMesure[0]?.time }}</ion-item>
+    </ion-card-content>
+  </ion-card>  
+
   <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>
